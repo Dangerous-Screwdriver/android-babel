@@ -2,9 +2,12 @@ package dangerous_screwdriver.nl.babelrod;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 
@@ -18,9 +21,7 @@ public class Login extends Activity {
         Spinner spinner = (Spinner) findViewById(R.id.language_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.language_array, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
     }
 
@@ -41,5 +42,14 @@ public class Login extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void login(View view) {
+        EditText editText = (EditText)findViewById(R.id.username);
+        Log.d(this.getClass().toString(), editText.getText().toString());
+
+        Spinner spinner = (Spinner)findViewById(R.id.language_spinner);
+        Log.d(this.getClass().toString(), spinner.getSelectedItem().toString());
+
     }
 }
