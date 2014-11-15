@@ -9,9 +9,13 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import com.microsoft.windowsazure.mobileservices.*;
 
+import java.net.MalformedURLException;
 
 public class Login extends Activity {
+
+    private MobileServiceClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,12 @@ public class Login extends Activity {
 
         Spinner spinner = (Spinner)findViewById(R.id.language_spinner);
         Log.d(this.getClass().toString(), spinner.getSelectedItem().toString());
+
+        try {
+            client = new MobileServiceClient( "https://babel.azure-mobile.net/", "jwoqtSgFYXpShIajosnaqgdoukfNfG70", this );
+        } catch (MalformedURLException e) {
+            Log.d(this.getClass().toString(), e.getMessage());
+        }
 
     }
 }

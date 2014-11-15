@@ -20,6 +20,8 @@
             android:name=".message"
             android:label="@string/title_activity_message" >
         </activity>
+
+        <uses-permission android:name="android.permission.INTERNET" />
     </application>
 
 </manifest>
